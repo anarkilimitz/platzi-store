@@ -1,0 +1,50 @@
+@import '../styles/variables.scss';
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $bg-header;
+    padding: 20px 200px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    color: #666;
+}
+
+.logo {
+    flex-shrink: 0;
+
+    img {
+        display: block;
+        width: 110px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 7%;
+    }
+}
+
+.rights {
+    a {
+        color: #366fac;
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.social {
+    a {
+        display: block;
+        width: 16px;
+        height: 16px;
+    }
+
+    .icon {
+        width: 24px;
+        height: 24px;
+        fill: #666;
+    }
+}

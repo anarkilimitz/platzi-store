@@ -1,8 +1,10 @@
+@import '../styles/variables.scss';
+
 .header {
+    background: $bg-header;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #fff;
     padding: 10px 200px;
 }
 
