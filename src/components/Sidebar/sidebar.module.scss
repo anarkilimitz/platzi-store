@@ -6,7 +6,6 @@
     height: 330px;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
     background-color: $bg-header;
 }
 
@@ -41,8 +40,24 @@ ul {
 }
 
 .link {
+    display: block;
+    padding: 4px 10px;
     color: #fff;
     font-size: 14px;
     font-weight: 300;
     text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+
+
+    &:hover {
+        background-color: #fff;
+        color: $bg-main;
+    }
+
+    &.active {
+        background-color: #fff;
+        color: $bg-main;
+        border-left: 15px solid $bg-main;
+    }
 }
