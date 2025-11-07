@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    background: $bg-main;
+    background: $bg-header;
     color: $light;
     font-family: 'Merienda',
         cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -18,27 +18,42 @@ code {
 }
 
 .container {
+    display: flex;
+    max-width: 1200px;
+    min-height: 410px;
     margin: 0 auto;
     padding: 0;
+    background-color: $bg-main;
+}
 
-    @media (max-width: 1460px) {
-        max-width: 1200px;
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1140px;
     }
+}
 
-    @media (max-width: 1220px) {
-        max-width: 992px;
+@media (max-width: 992px) {
+    .container {
+        max-width: 960px;
     }
+}
 
-    @media (max-width: 1020px) {
-        max-width: 768px;
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
     }
+}
 
-    @media (max-width: 790px) {
-        max-width: 576px;
+@media (max-width: 576px) {
+    .container {
+        max-width: 540px;
+        padding: 0 10px;
     }
+}
 
-    @media (max-width: 600px) {
+@media (max-width: 480px) {
+    .container {
         max-width: 100%;
-        padding: 0 5px;
+        padding: 0 10px;
     }
 }

@@ -2,8 +2,8 @@
 
 .sidebar {
     margin: 20px;
-    width: 220px;
-    height: 330px;
+    min-width: 220px;
+    min-height: 330px;
     display: flex;
     flex-direction: column;
     background-color: $bg-header;
