@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './footer.module.scss';
 import { ROUTES } from '../../utils/routes';
 
-import LOGO from '../../components/styles/logo/logosportify.jpg';
+import LOGO from '../../components/styles/logo/icon.png';
 
 const Footer = () => (
 	<section className={styles.footer}>

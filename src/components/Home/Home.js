@@ -9,7 +9,7 @@ const Home = () => {
 	return (
 		<>
 			<Poster />
-			<Products products={list} amount={8} title="Trending" />
+			<Products products={list} amount={4} title="Trending" />
 		</>
 	);
 };

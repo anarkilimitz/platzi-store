@@ -5,7 +5,7 @@ import styles from './header.module.scss';
 
 import { ROUTES } from '../../utils/routes';
 
-import LOGO from '../../components/styles/logo/logosportify.jpg';
+import LOGO from '../../components/styles/logo/icon.png';
 import AVATAR from '../../components/styles/avatar/avatar.jpeg';
 
 const Header = () => {
