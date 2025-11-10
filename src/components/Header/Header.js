@@ -23,7 +23,7 @@ const Header = () => {
 						className={styles.avatar}
 						style={{ backgroundImage: `url(${AVATAR})` }}
 					/>
-					<div className={styles.username}>Guest</div>
+					<div className={styles.username}>Гость</div>
 				</div>
 				<form className={styles.form}>
 					<div className={styles.icon}>

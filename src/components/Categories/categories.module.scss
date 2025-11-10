@@ -1,0 +1,63 @@
+@import '../styles/variables.scss';
+
+.section {
+    margin: 20px;
+    width: 100%;
+}
+
+.section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: $light;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    background-color: $bg-header;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    color: $text-primary;
+    overflow: hidden;
+    text-align: center;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}

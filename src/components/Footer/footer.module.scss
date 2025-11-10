@@ -2,7 +2,7 @@
 
 .footer {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,6 +13,7 @@
 }
 
 .logo {
+    margin-left: 15px;
     flex-shrink: 0;
 
     img {
@@ -25,19 +26,30 @@
 }
 
 .rights {
+    display: inline-block;
+
     a {
-        color: #366fac;
+        color: #666;
         text-decoration: none;
         font-weight: 500;
 
         &:hover {
             text-decoration: underline;
+            color: $light;
         }
     }
 }
 
 .social {
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 110px;
+    height: 100%;
+    margin-right: 40px;
+
     a {
         display: block;
         width: 24px;
@@ -48,5 +60,9 @@
         width: 24px;
         height: 24px;
         fill: #666;
+
+        &:hover {
+            fill: $dark;
+        }
     }
 }

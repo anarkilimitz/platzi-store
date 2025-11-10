@@ -15,9 +15,9 @@ const Footer = () => (
 		</div>
 
 		<div className={styles.rights}>
-			Developed by
+			Developed by {''}
 			<a href="https://portfolio.limitz.ru" target="_blank" rel="noreferrer">
-				<br /> Евгений
+				Евгений
 			</a>
 		</div>
 
@@ -25,6 +25,16 @@ const Footer = () => (
 			<a href="https://instagram.com" target="_blank" rel="noreferrer">
 				<svg className={styles.icon}>
 					<use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#instagram`} />
+				</svg>
+			</a>
+			<a href="https://facebook.com" target="_blank" rel="noreferrer">
+				<svg className={styles.icon}>
+					<use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#facebook`} />
+				</svg>
+			</a>
+			<a href="https://twitter.com" target="_blank" rel="noreferrer">
+				<svg className={styles.icon}>
+					<use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#twitter`} />
 				</svg>
 			</a>
 		</div>

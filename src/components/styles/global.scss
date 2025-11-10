@@ -58,3 +58,13 @@ code {
         padding: 0 10px;
     }
 }
+
+::selection {
+    background-color: $select-color;
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background-color: $select-color;
+    color: #ffffff;
+}

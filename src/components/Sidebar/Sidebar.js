@@ -18,10 +18,10 @@ const Sidebar = () => {
 				</div>
 				<div className={styles.footer}>
 					<a href="/help" target="_blank" className={styles.link}>
-						Help
+						Помощь
 					</a>
 					<a href="/terms" target="_blank" className={styles.link}>
-						Terms & Conditions
+						Условия
 					</a>
 				</div>
 			</section>
@@ -60,10 +60,10 @@ const Sidebar = () => {
 
 			<div className={styles.footer}>
 				<a href="/help" target="_blank" className={styles.link}>
-					Help
+					Помощь
 				</a>
 				<a href="/terms" target="_blank" className={styles.link}>
-					Terms & Conditions
+					Условия
 				</a>
 			</div>
 		</section>
