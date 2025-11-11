@@ -2,6 +2,10 @@ import React from 'react';
 
 import styles from './product.module.scss';
 
+import { Link } from 'react-router-dom';
+
+import { ROUTES } from '../../utils/routes';
+
 const SIZES = [4, 4.5, 5];
 
 const Product = ({ title, price, images, description }) => {
@@ -14,18 +18,20 @@ const Product = ({ title, price, images, description }) => {
 					className={styles.current}
 					style={{ backgroundImage: `url(${currentImage})` }}
 				/>
-				{images.map((image, i) => (
-					<div
-						key={i}
-						className={styles.image}
-						style={{ backgroundImage: `url(${image})` }}
-						onClick={() => {}}
-					/>
-				))}
+				<div className={styles['images-list']}>
+					{images.map((image, i) => (
+						<div
+							key={i}
+							className={styles.image}
+							style={{ backgroundImage: `url(${image})` }}
+							onClick={() => {}}
+						/>
+					))}
+				</div>
 			</div>
 			<div className={styles.info}>
 				<h1 className={styles.title}>{title}</h1>
-				<div className={styles.price}>{price}</div>
+				<div className={styles.price}>${price}</div>
 				<div className={styles.color}>
 					<span>Color:</span>Green
 				</div>
@@ -47,7 +53,9 @@ const Product = ({ title, price, images, description }) => {
 					<button className={styles.favourite}>Добавить в избранное</button>
 				</div>
 				<div className={styles.bottom}>
-					<div className={styles.purchase}>19 people purchased</div>
+					<div className={styles.purchase}>19 покупок совершено</div>
+
+					<Link to={ROUTES.HOME}>Вернуться в магазин</Link>
 				</div>
 			</div>
 		</section>

@@ -1,0 +1,164 @@
+@import '../styles/variables.scss';
+
+.product {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: $bg-header;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px;
+    width: 880px;
+    min-height: 350px;
+    margin: 20px 0;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.images {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.current {
+    width: 100%;
+    height: 396px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 6px;
+    background-color: $bg-header; // если картинка кривая фон закроет норм!!!
+}
+
+.images-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.image {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 700;
+    color: $light;
+    line-height: 1.3;
+}
+
+.price {
+    font-size: 22px;
+    color: $bg-main;
+    font-weight: 600;
+}
+
+.color,
+.sizes {
+    font-size: 14px;
+    color: $light;
+
+    span {
+        color: $light;
+        margin-right: 6px;
+        text-transform: uppercase;
+    }
+}
+
+.list {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.size {
+    background: $bg-main;
+    color: $light;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        background: lighten($bg-main, 10%);
+    }
+}
+
+.description {
+    font-size: 14px;
+    color: $light;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.action {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.add,
+.favourite {
+    width: 180px;
+    height: 46px;
+    background: $bg-main;
+    color: $light;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: darken($bg-main, 10%);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        background: darken($bg-main, 15%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: $text-main;
+    margin-top: 10px;
+
+    a {
+        color: $text-main;
+        text-decoration: none;
+        transition: 0.3s;
+
+        &:hover {
+            color: $light;
+        }
+    }
+}
