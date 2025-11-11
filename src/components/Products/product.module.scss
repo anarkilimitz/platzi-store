@@ -104,6 +104,11 @@
     &:hover {
         background: lighten($bg-main, 10%);
     }
+
+    &.active {
+        color: $bg-main;
+        background: $select-color;
+    }
 }
 
 .description {
@@ -141,6 +146,11 @@
     &:active {
         background: darken($bg-main, 15%);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:disabled {
+        background-color: $btn-dis;
+        color: $text-main;
     }
 }
 

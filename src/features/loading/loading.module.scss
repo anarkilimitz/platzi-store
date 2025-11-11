@@ -1,4 +1,12 @@
 // isLoading
+// контейнер для выравнивания spinner
+.loaderWrapper {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .lds-hourglass,
 .lds-hourglass:after {
     box-sizing: border-box;
@@ -39,12 +47,4 @@
     100% {
         transform: rotate(1800deg);
     }
-}
-
-// контейнер для выравнивания spinner
-.loaderWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
 }

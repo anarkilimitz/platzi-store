@@ -14,7 +14,7 @@ const Products = ({ title, style = {}, products = [], amount }) => {
 					<Link to={`/products/${id}`} key={id} className={styles.product}>
 						<div
 							className={styles.image}
-							style={{ backgroundImage: `url(${images[1]})` }}
+							style={{ backgroundImage: `url(${images[0]})` }}
 						/>
 
 						<div className={styles.wrapper}>

@@ -18,13 +18,6 @@ const Header = () => {
 			</div>
 
 			<div className={styles.info}>
-				<div className={styles.user}>
-					<div
-						className={styles.avatar}
-						style={{ backgroundImage: `url(${AVATAR})` }}
-					/>
-					<div className={styles.username}>Гость</div>
-				</div>
 				<form className={styles.form}>
 					<div className={styles.icon}>
 						<svg className={styles.icon}>
@@ -43,6 +36,13 @@ const Header = () => {
 					</div>
 					{false && <div className={styles.box}></div>}
 				</form>
+				<div className={styles.user}>
+					<div
+						className={styles.avatar}
+						style={{ backgroundImage: `url(${AVATAR})` }}
+					/>
+					<div className={styles.username}>Гость</div>
+				</div>
 				<div className={styles.account}>
 					<Link to={ROUTES.HOME} className={styles.favourites}>
 						<svg className={styles.icon}>

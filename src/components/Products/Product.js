@@ -1,15 +1,32 @@
-import React from 'react';
-
-import styles from './product.module.scss';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
 import { ROUTES } from '../../utils/routes';
 
+import styles from './product.module.scss';
+import { addItemToCart } from '../../features/user/userSlice';
+
 const SIZES = [4, 4.5, 5];
 
-const Product = ({ title, price, images, description }) => {
-	const currentImage = images[0];
+const Product = (item) => {
+	const { title, price, images, description } = item;
+
+	const dispatch = useDispatch();
+
+	const [currentImage, setCurrentImage] = useState();
+	const [currentSize, setCurrentSize] = useState();
+
+	useEffect(() => {
+		if (!images.length) return;
+
+		setCurrentImage(images[0]);
+	}, [images]);
+
+	const addToCart = () => {
+		dispatch(addItemToCart(item));
+	};
 
 	return (
 		<section className={styles.product}>
@@ -24,7 +41,7 @@ const Product = ({ title, price, images, description }) => {
 							key={i}
 							className={styles.image}
 							style={{ backgroundImage: `url(${image})` }}
-							onClick={() => {}}
+							onClick={() => setCurrentImage(image)}
 						/>
 					))}
 				</div>
@@ -40,16 +57,29 @@ const Product = ({ title, price, images, description }) => {
 
 					<div className={styles.list}>
 						{SIZES.map((size) => (
-							<div key={size} className={`${styles.size}`} onClick={() => {}}>
+							<div
+								key={size}
+								className={`${styles.size} ${
+									currentSize === size ? styles.active : ''
+								}`}
+								onClick={() => setCurrentSize(size)}
+							>
 								{size}
 							</div>
 						))}
 					</div>
 				</div>
+
 				<p className={styles.description}>{description}</p>
 
 				<div className={styles.action}>
-					<button className={styles.add}>Добавить в корзину</button>
+					<button
+						onClick={addToCart}
+						className={styles.add}
+						disabled={!currentSize}
+					>
+						Добавить в корзину
+					</button>
 					<button className={styles.favourite}>Добавить в избранное</button>
 				</div>
 				<div className={styles.bottom}>
