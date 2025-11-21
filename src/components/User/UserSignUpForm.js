@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import styles from './user.module.scss';
+import { createUser } from '../../features/user/userSlice';
 
-const UserSignUpForm = () => {
-	const { values, setValues } = useState({
+const UserSignUpForm = ({ toggleCurrentFormType, closeForm }) => {
+	const dispatch = useDispatch();
+	const [values, setValues] = useState({
 		name: '',
 		email: '',
 		password: '',
@@ -14,9 +17,18 @@ const UserSignUpForm = () => {
 		setValues({ ...values, [name]: value });
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const isNotEmpty = Object.values(values).some((val) => !val);
+		if (isNotEmpty) return;
+		dispatch(createUser(values));
+		closeForm();
+	};
+
 	return (
 		<div className={styles.wrapper}>
-			<div className={styles.close}>
+			<div className={styles.close} onClick={closeForm}>
 				<svg className={styles.icon}>
 					<use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#close`} />
 				</svg>
@@ -24,7 +36,7 @@ const UserSignUpForm = () => {
 
 			<div className={styles.title}>Зарегистрироваться</div>
 
-			<form className={styles.form}>
+			<form className={styles.form} onSubmit={handleSubmit}>
 				<div className={styles.group}>
 					<input
 						type="email"
@@ -69,7 +81,13 @@ const UserSignUpForm = () => {
 						onChange={handleChange}
 					/>
 				</div>
-				<div className={styles.link}>У меня уже есть аккаунт</div>
+				<div
+					className={styles.link}
+					onClick={() => toggleCurrentFormType('login')}
+				>
+					У меня уже есть аккаунт
+				</div>
+
 				<button className={styles.submit} type="submit">
 					Создать аккаунт
 				</button>
