@@ -4,8 +4,8 @@
 
 ## Авторизация пользователя только такая, чтобы получить токен (новые правила API 2025г):
 
-> email: john@mail.com
-> password: changeme
-
-> email: maria@mail.com
-> password: 12345
+| Email              | Пароль       |
+|--------------------|--------------|
+| `john@mail.com`    | `changeme`   |
+| `maria@mail.com`   | `12345`      |
+| `nicolas@mail.com` | `12345`      |
