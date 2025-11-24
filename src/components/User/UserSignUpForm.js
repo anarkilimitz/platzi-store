@@ -21,8 +21,11 @@ const UserSignUpForm = ({ toggleCurrentFormType, closeForm }) => {
 		e.preventDefault();
 
 		const isNotEmpty = Object.values(values).some((val) => !val);
+
 		if (isNotEmpty) return;
+
 		dispatch(createUser(values));
+
 		closeForm();
 	};
 
@@ -73,7 +76,7 @@ const UserSignUpForm = ({ toggleCurrentFormType, closeForm }) => {
 				<div className={styles.group}>
 					<input
 						type="avatar"
-						placeholder="Ваш аватар"
+						placeholder="Ваш аватар в виде URL-адреса"
 						name="avatar"
 						value={values.avatar}
 						autoComplete="off"

@@ -1,0 +1,76 @@
+@import '../styles/variables.scss';
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.group {
+
+    input {
+        padding: 12px 16px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: all 0.2s ease;
+        background: white;
+        color: #333;
+
+        &:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        &:hover {
+            border-color: #b0b7c3;
+        }
+
+        &::placeholder {
+            color: #999;
+        }
+
+        @media (max-width: 480px) {
+            padding: 10px 14px;
+            font-size: 14px;
+        }
+    }
+}
+
+.submit {
+    width: 100%;
+    height: 46px;
+    background: $bg-header;
+    color: $light;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: darken($bg-main, 10%);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        background: darken($bg-main, 15%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:disabled {
+        background-color: $btn-dis;
+        color: $text-main;
+    }
+}

@@ -23,6 +23,7 @@ export const loginUser = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const res = await axios.post(`${BASE_URL}/auth/login`, payload);
+			console.log('Ответ от /auth/login:', res.data);
 			const login = await axios(`${BASE_URL}/auth/profile`, {
 				headers: {
 					Authorization: `Bearer ${res.data.access_token}`,
@@ -30,6 +31,22 @@ export const loginUser = createAsyncThunk(
 			});
 
 			return login.data;
+		} catch (err) {
+			console.log(err);
+			return thunkAPI.rejectWithValue(err);
+		}
+	}
+);
+
+// обновление юзера
+export const updateUser = createAsyncThunk(
+	'users/updateUser',
+	async (payload, thunkAPI) => {
+		const state = thunkAPI.getState();
+		const userId = state.user.currentUser.id; // беру id
+		try {
+			const res = await axios.put(`${BASE_URL}/users/${userId}`, payload);
+			return res.data;
 		} catch (err) {
 			console.log(err);
 			return thunkAPI.rejectWithValue(err);
@@ -77,14 +94,9 @@ const userSlice = createSlice({
 	},
 
 	extraReducers: (builder) => {
-		// 	builder.addCase(getCategories.pending, (state) => {
-		// 		state.isLoading = true;
-		// 	});
 		builder.addCase(createUser.fulfilled, addCurrentUser);
 		builder.addCase(loginUser.fulfilled, addCurrentUser);
-		// 	builder.addCase(getCategories.rejected, (state) => {
-		// 		state.isLoading = false;
-		// 	});
+		builder.addCase(updateUser.fulfilled, addCurrentUser);
 	},
 });
 
