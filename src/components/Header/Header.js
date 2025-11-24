@@ -10,15 +10,19 @@ import LOGO from '../../components/styles/logo/icon.png';
 import AVATAR from '../../components/styles/avatar/avatar.jpeg';
 
 import { toggleForm } from '../../features/user/userSlice';
+import { useGetProductsQuery } from '../../features/api/apiSlice';
 
 const Header = () => {
 	const dispatch = useDispatch();
-
 	const navigate = useNavigate();
 
+	const [searchValue, setSearchValue] = useState('');
 	const { currentUser } = useSelector(({ user }) => user);
 
 	const [values, setValues] = useState({ name: 'Гость', avatar: AVATAR });
+
+	const { data, isLoading } = useGetProductsQuery({ title: searchValue });
+	console.log(data);
 
 	useEffect(() => {
 		if (!currentUser) return;
@@ -29,6 +33,10 @@ const Header = () => {
 	const handleClick = () => {
 		if (!currentUser) dispatch(toggleForm(true));
 		else navigate(ROUTES.PROFILE);
+	};
+
+	const handleSearch = ({ target: { value } }) => {
+		setSearchValue(value);
 	};
 
 	return (
@@ -52,11 +60,34 @@ const Header = () => {
 							name="search"
 							placeholder="Search for anything..."
 							autoComplete="off"
-							onChange={() => {}}
-							value=""
+							onChange={handleSearch}
+							value={searchValue}
 						/>
 					</div>
-					{false && <div className={styles.box}></div>}
+					{searchValue && (
+						<div className={`${styles.box} ${styles.active}`}>
+							{isLoading
+								? 'Загрузка...'
+								: !data.length
+								? 'Нет результата'
+								: data.map(({ title, images, id }) => {
+										return (
+											<Link
+												key={id}
+												className={styles.item}
+												to={`/products/${id}`}
+												onClick={() => setSearchValue('')} //очистка после клика
+											>
+												<div
+													className={styles.image}
+													style={{ backgroundImage: `url(${images[0]})` }}
+												/>
+												<div className={styles.title}>{title}</div>
+											</Link>
+										);
+								  })}
+						</div>
+					)}
 				</form>
 				<div className={styles.user} onClick={handleClick}>
 					<div
