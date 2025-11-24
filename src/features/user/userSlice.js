@@ -11,7 +11,7 @@ export const createUser = createAsyncThunk(
 			const res = await axios.post(`${BASE_URL}/users`, payload);
 			return res.data;
 		} catch (err) {
-			console.log(err);
+			// console.log(err);
 			return thunkAPI.rejectWithValue(err);
 		}
 	}
@@ -23,7 +23,7 @@ export const loginUser = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const res = await axios.post(`${BASE_URL}/auth/login`, payload);
-			console.log('Ответ от /auth/login:', res.data);
+			// console.log('Ответ от /auth/login:', res.data);
 			const login = await axios(`${BASE_URL}/auth/profile`, {
 				headers: {
 					Authorization: `Bearer ${res.data.access_token}`,
@@ -32,7 +32,7 @@ export const loginUser = createAsyncThunk(
 
 			return login.data;
 		} catch (err) {
-			console.log(err);
+			// console.log(err);
 			return thunkAPI.rejectWithValue(err);
 		}
 	}
@@ -48,7 +48,7 @@ export const updateUser = createAsyncThunk(
 			const res = await axios.put(`${BASE_URL}/users/${userId}`, payload);
 			return res.data;
 		} catch (err) {
-			console.log(err);
+			// console.log(err);
 			return thunkAPI.rejectWithValue(err);
 		}
 	}

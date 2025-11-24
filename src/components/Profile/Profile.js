@@ -98,3 +98,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+// не забывать прописывать в Routes чтобы появилось!

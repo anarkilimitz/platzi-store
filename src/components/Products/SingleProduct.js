@@ -52,3 +52,5 @@ const SingleProduct = () => {
 };
 
 export default SingleProduct;
+
+// не забывать прописывать в Routes чтобы появилось!
