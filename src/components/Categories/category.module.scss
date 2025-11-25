@@ -1,0 +1,126 @@
+@import '../styles/variables.scss';
+
+.wrapper {
+    width: 1160px;
+    margin: 0;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: $light;
+    margin: 40px 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    min-width: 220px;
+
+    label {
+        color: $light;
+        margin: 8px auto;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    input {
+        width: 180px;
+        padding: 14px 16px;
+        border: 2px solid $bg-header;
+        border-radius: 10px;
+        background: $bg-header;
+        color: $light;
+        font-size: 16px;
+        transition: all 0.3s;
+
+        &:focus {
+            outline: none;
+            border-color: $btn-dis;
+            box-shadow: 0 0 0 1px rgb(255, 255, 255);
+        }
+
+        &::placeholder {
+            color: $light;
+        }
+    }
+}
+
+.submitBtn {
+    margin-top: 20px;
+    padding: 14px 32px;
+    width: 180px;
+    height: 46px;
+    background: $bg-header;
+    color: $light;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: darken($bg-main, 10%);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        background: darken($bg-main, 15%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus {
+        outline: 1px solid lighten($bg-main, 30%);
+        outline-offset: 1px;
+    }
+}
+
+.preloader {
+    margin: 0 auto;
+}
+
+.back {
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 20px;
+    color: $light;
+
+    span {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    button {
+        padding: 12px 32px;
+        background-color: $bg-header;
+        color: $light;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: $bg-main;
+        }
+    }
+}
