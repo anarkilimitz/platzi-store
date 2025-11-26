@@ -10,23 +10,22 @@ import Banner from '../Banner/Banner';
 
 const Home = () => {
 	const dispatch = useDispatch();
-	const {
-		products: { list, filtered },
-		categories,
-	} = useSelector((state) => state);
+	//исправлена ошибка - в Redux переписывылся весь стейт целиком. заменил на 3 строки
+	const productsList = useSelector((state) => state.products.list);
+	const filtered = useSelector((state) => state.products.filtered);
+	const categoriesList = useSelector((state) => state.categories.list);
 
 	useEffect(() => {
-		if (!list.length) return;
-
+		if (!productsList.length) return;
 		dispatch(filterByPrice(30));
-	}, [dispatch, list.length]);
+	}, [dispatch, productsList.length]);
 
 	return (
 		<>
 			<Poster />
-			<Products products={list} amount={4} title="Тренды" />
+			<Products products={productsList} amount={4} title="Тренды" />
 			<Categories
-				products={categories.list}
+				products={categoriesList}
 				amount={6}
 				title="Стоит посмотреть"
 			/>
@@ -35,4 +34,5 @@ const Home = () => {
 		</>
 	);
 };
+
 export default Home;
