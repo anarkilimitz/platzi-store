@@ -113,7 +113,7 @@
         padding: 12px 32px;
         background-color: $bg-header;
         color: $light;
-        border: none;
+        border: 1px solid transparent;
         border-radius: 8px;
         font-size: 16px;
         cursor: pointer;
@@ -121,6 +121,49 @@
 
         &:hover {
             background-color: $bg-main;
+            border: 1px solid $light;
+        }
+
+        &:active {
+            background: darken($bg-main, 15%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        &:focus {
+            outline: 1px solid lighten($bg-main, 30%);
+            outline-offset: 1px;
+        }
+    }
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0px 60px 60px;
+
+    button {
+        padding: 12px 32px;
+        background-color: $bg-header;
+        color: $light;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: $bg-main;
+            border: 1px solid $light;
+        }
+
+        &:active {
+            background: darken($bg-main, 15%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        &:focus {
+            outline: 1px solid lighten($bg-main, 30%);
+            outline-offset: 1px;
         }
     }
 }

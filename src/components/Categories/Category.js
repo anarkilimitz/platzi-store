@@ -26,27 +26,32 @@ const Category = () => {
 	};
 
 	const [cat, setCat] = useState('');
-	// const [items, setItems] = useState([]);
+	// хранит все уже загруженные товары
+	const [items, setItems] = useState([]);
+
 	const [values, setValues] = useState(defaultValues);
 	const [params, setParams] = useState(defaultParams);
 
-	const { data = [], isLoading, isSuccess } = useGetProductsQuery(params);
+	const {
+		data = [],
+		isLoading,
+		isFetching,
+		isSuccess,
+	} = useGetProductsQuery(params);
 
 	useEffect(() => {
 		if (!id) return;
 
 		setParams({ ...defaultParams, categoryId: id });
+		setItems([]); // очищает старые товары при смене категории
 	}, [id]);
 
-	// useEffect(() => {
-	// 	if (!isLoading) return;
+	// догружает товары в общее состояние
+	useEffect(() => {
+		if (!data.length || isFetching) return;
 
-	// 	const products = Object.values(data);
-
-	// 	if (!products.length) return;
-
-	// 	setItems((_items) => [..._items, ...products]);
-	// }, [data, isLoading]);
+		setItems((prev) => [...prev, ...data]);
+	}, [data, isFetching]);
 
 	useEffect(() => {
 		if (!id || !list.length) {
@@ -65,7 +70,12 @@ const Category = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault(); // чтоб не перезагружалась страничка при поиске
 
-		setParams({ ...params, ...values });
+		setParams({ ...defaultParams, ...values });
+		setItems([]); // сбрасывает при новых фильтрах
+	};
+	// догрузка товаров
+	const loadMore = () => {
+		setParams((prev) => ({ ...prev, offset: prev.offset + prev.limit }));
 	};
 
 	return (
@@ -117,10 +127,18 @@ const Category = () => {
 			) : (
 				<Products
 					title=""
-					products={data}
+					products={items}
 					style={{ padding: 0 }}
-					amount={data.length}
+					amount={items.length}
 				/>
+			)}
+
+			{data.length === params.limit && (
+				<div className={styles.more}>
+					<button onClick={loadMore} disabled={isFetching}>
+						{isFetching ? 'Загрузка...' : 'Показать больше товаров'}
+					</button>
+				</div>
 			)}
 		</section>
 	);
