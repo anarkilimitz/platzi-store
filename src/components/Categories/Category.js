@@ -101,6 +101,7 @@ const Category = () => {
 						placeholder="0"
 						value={values.price_min || ''}
 					/>
+					<span>₽ от:</span>
 				</div>
 				<div className={styles.filter}>
 					<label>Максимальная цена</label>
@@ -111,6 +112,7 @@ const Category = () => {
 						placeholder="100000"
 						value={values.price_max || ''}
 					/>
+					<span>₽ до:</span>
 				</div>
 
 				<button type="submit" className={styles.submitBtn}>

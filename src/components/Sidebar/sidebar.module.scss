@@ -2,11 +2,19 @@
 
 .sidebar {
     margin: 20px;
+    max-width: 220px;
     min-width: 220px;
-    min-height: 330px;
+    max-height: 370px;
+    min-height: 370px;
     display: flex;
     flex-direction: column;
     background-color: $bg-header;
+
+    * {
+        // перенос длинных слов
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
 }
 
 .title {
