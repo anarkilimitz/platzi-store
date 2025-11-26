@@ -12,6 +12,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar {
+    width: 0; // убирает scrollbar
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
@@ -61,10 +65,10 @@ code {
 
 ::selection {
     background-color: $select-color;
-    color: #ffffff;
+    color: $light;
 }
 
 ::-moz-selection {
     background-color: $select-color;
-    color: #ffffff;
+    color: $light;
 }
