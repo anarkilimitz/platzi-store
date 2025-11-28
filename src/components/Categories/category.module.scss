@@ -61,19 +61,18 @@
             color: $light;
         }
     }
-}
 
-
-span {
-    position: absolute;
-    right: 14px;
-    top: 75%;
-    transform: translateY(-75%);
-    color: $light;
-    font-size: 22px;
-    pointer-events: none; // чтобы клик проходил в input
-    user-select: none;
-    z-index: 1;
+    span {
+        position: absolute;
+        right: 14px;
+        top: 75%;
+        transform: translateY(-75%);
+        color: $light;
+        font-size: 22px;
+        pointer-events: none; // чтобы клик проходил в input
+        user-select: none;
+        z-index: 1;
+    }
 }
 
 input[type="number"] {

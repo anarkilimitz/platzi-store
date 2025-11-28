@@ -41,9 +41,10 @@ const Category = () => {
 
 	useEffect(() => {
 		if (!id) return;
-
+		// сбрасывает параметры запроса
 		setParams({ ...defaultParams, categoryId: id });
 		setItems([]); // очищает старые товары при смене категории
+		setValues(defaultValues); // очищает все фильтры при смене категории списка
 	}, [id]);
 
 	// догружает товары в общее состояние
