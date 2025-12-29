@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 import { useParams } from 'react-router-dom';
 import { useGetProductsQuery } from '../../features/api/apiSlice';
@@ -13,17 +13,23 @@ const Category = () => {
 	// беру категории из стора, чтобы отображались в заголовке h2 (cat)
 	const { list } = useSelector(({ categories }) => categories);
 
-	const defaultValues = {
-		title: '',
-		price_min: 0,
-		price_max: 0,
-	};
-	const defaultParams = {
-		categoryId: id,
-		limit: 8,
-		offset: 0,
-		...defaultValues,
-	};
+	const defaultValues = useMemo(
+		() => ({
+			title: '',
+			price_min: 0,
+			price_max: 0,
+		}),
+		[]
+	);
+	const defaultParams = useMemo(
+		() => ({
+			categoryId: id,
+			limit: 8,
+			offset: 0,
+			...defaultValues,
+		}),
+		[id, defaultValues]
+	);
 
 	const [cat, setCat] = useState('');
 	// хранит все уже загруженные товары
@@ -42,10 +48,10 @@ const Category = () => {
 	useEffect(() => {
 		if (!id) return;
 		// сбрасывает параметры запроса
-		setParams({ ...defaultParams, categoryId: id });
+		setParams(defaultParams);
 		setItems([]); // очищает старые товары при смене категории
 		setValues(defaultValues); // очищает все фильтры при смене категории списка
-	}, [id]);
+	}, [id, defaultParams, defaultValues]);
 
 	// догружает товары в общее состояние
 	useEffect(() => {
