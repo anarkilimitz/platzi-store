@@ -16,13 +16,17 @@ const Footer = () => (
 
 		<div className={styles.rights}>
 			Developed by {''}
-			<a href="https://portfolio.limitz.ru" target="_blank" rel="noreferrer">
+			<a href="https://pavlenok.com" target="_blank" rel="noreferrer">
 				Евгений
 			</a>
 		</div>
 
 		<div className={styles.social}>
-			<a href="https://instagram.com" target="_blank" rel="noreferrer">
+			<a
+				href="https://www.instagram.com/evgeniypavlenok"
+				target="_blank"
+				rel="noreferrer"
+			>
 				<svg className={styles.icon}>
 					<use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#instagram`} />
 				</svg>
