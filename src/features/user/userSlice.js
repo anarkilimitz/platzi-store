@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { BASE_URL } from '../../utils/constants';
 
-// localStorage
+// localStorage liked
 const loadLikedFromStorage = () => {
 	try {
 		const data = localStorage.getItem('liked');
@@ -15,6 +15,21 @@ const loadLikedFromStorage = () => {
 
 const saveLikedToStorage = (liked) => {
 	localStorage.setItem('liked', JSON.stringify(liked));
+};
+
+// localStorage cart
+
+const loadCartFromStorage = () => {
+	try {
+		const data = localStorage.getItem('cart');
+		return data ? JSON.parse(data) : [];
+	} catch {
+		return [];
+	}
+};
+
+const saveCartToStorage = (cart) => {
+	localStorage.setItem('cart', JSON.stringify(cart));
 };
 
 // регистрация юзера
@@ -78,7 +93,7 @@ const userSlice = createSlice({
 	initialState: {
 		currentUser: null,
 		user: [],
-		cart: [],
+		cart: loadCartFromStorage(),
 		liked: loadLikedFromStorage(),
 		isLoading: false,
 		formType: 'signup',
@@ -99,9 +114,11 @@ const userSlice = createSlice({
 			} else newCart.push({ ...payload, quantity: 1 });
 
 			state.cart = newCart;
+			saveCartToStorage(state.cart);
 		},
 		removeItemFromCart: (state, action) => {
 			state.cart = state.cart.filter((item) => item.id !== action.payload);
+			saveCartToStorage(state.cart);
 		},
 		addItemToLiked: (state, { payload }) => {
 			const exists = state.liked.find((item) => item.id === payload.id);
