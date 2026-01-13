@@ -116,6 +116,18 @@
     align-items: center;
 }
 
+.liked svg {
+    width: 24px;
+    height: 24px;
+    fill: #666;
+}
+
+.liked {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .count {
     position: absolute;
     top: -12px;

@@ -17,7 +17,7 @@ const Header = () => {
 	const navigate = useNavigate();
 
 	const [searchValue, setSearchValue] = useState('');
-	const { currentUser, cart } = useSelector(({ user }) => user);
+	const { currentUser, cart, liked } = useSelector(({ user }) => user);
 
 	const [values, setValues] = useState({ name: 'Гость', avatar: AVATAR });
 
@@ -97,17 +97,22 @@ const Header = () => {
 					<div className={styles.username}>{values.name}</div>
 				</div>
 				<div className={styles.account}>
-					<Link to={ROUTES.HOME} className={styles.favourites}>
+					<Link to={ROUTES.LIKED} className={styles.liked}>
 						<svg className={styles.icon}>
 							<use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
 						</svg>
+						{!!liked.length && (
+							<span className={styles.count}>{liked.length}</span>
+						)}
 					</Link>
 
 					<Link to={ROUTES.CART} className={styles.cart}>
 						<svg className={styles.icon}>
 							<use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#cart`} />
 						</svg>
-						{!!cart.length && <span className={styles.count}>{cart.length}</span>}
+						{!!cart.length && (
+							<span className={styles.count}>{cart.length}</span>
+						)}
 					</Link>
 				</div>
 			</div>

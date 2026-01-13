@@ -7,6 +7,7 @@ import { ROUTES } from '../../utils/routes';
 
 import styles from './product.module.scss';
 import { addItemToCart } from '../../features/user/userSlice';
+import { addItemToLiked } from '../../features/user/userSlice';
 
 const SIZES = [4, 4.5, 5];
 
@@ -26,6 +27,10 @@ const Product = (item) => {
 
 	const addToCart = () => {
 		dispatch(addItemToCart(item));
+	};
+
+	const addToLiked = () => {
+		dispatch(addItemToLiked(item));
 	};
 
 	return (
@@ -80,7 +85,12 @@ const Product = (item) => {
 					>
 						Добавить в корзину
 					</button>
-					<button className={styles.favourite}>Добавить в избранное</button>
+					<button
+						onClick={addToLiked}
+						className={styles.favourite}
+					>
+						Добавить в избранное
+					</button>
 				</div>
 				<div className={styles.bottom}>
 					<div className={styles.purchase}>19 покупок совершено</div>
