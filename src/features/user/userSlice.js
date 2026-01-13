@@ -3,6 +3,20 @@ import axios from 'axios';
 
 import { BASE_URL } from '../../utils/constants';
 
+// localStorage
+const loadLikedFromStorage = () => {
+	try {
+		const data = localStorage.getItem('liked');
+		return data ? JSON.parse(data) : [];
+	} catch {
+		return [];
+	}
+};
+
+const saveLikedToStorage = (liked) => {
+	localStorage.setItem('liked', JSON.stringify(liked));
+};
+
 // регистрация юзера
 export const createUser = createAsyncThunk(
 	'users/createUser',
@@ -65,7 +79,7 @@ const userSlice = createSlice({
 		currentUser: null,
 		user: [],
 		cart: [],
-		liked: [],
+		liked: loadLikedFromStorage(),
 		isLoading: false,
 		formType: 'signup',
 		showForm: false,
@@ -91,10 +105,14 @@ const userSlice = createSlice({
 		},
 		addItemToLiked: (state, { payload }) => {
 			const exists = state.liked.find((item) => item.id === payload.id);
-			if (!exists) state.liked.push(payload);
+			if (!exists) {
+				state.liked.push(payload);
+				saveLikedToStorage(state.liked);
+			}
 		},
 		removeItemFromLiked: (state, { payload }) => {
 			state.liked = state.liked.filter((item) => item.id !== payload);
+			saveLikedToStorage(state.liked);
 		},
 		toggleForm: (state, { payload }) => {
 			state.showForm = payload;
